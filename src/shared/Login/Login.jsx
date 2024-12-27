@@ -1,11 +1,16 @@
 import React from "react";
 import { FaUser, FaLock } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
+  const handleGoogleLogin = () => {
+    // গুগল লগইন ফাংশনালিটি এখানে যুক্ত করতে হবে
+    alert("Google login successful!");
+  };
+
   return (
     <div
-      className="h-screen flex items-center justify-center bg-gradient-to-t from-teal-800 via-rose-800 to-slate-800 rounded-lg backdrop-blur-0"
-      
+      className="p-6 flex items-center justify-center bg-gradient-to-tr from-teal-800 via-slate-800 to-slate-800 rounded-lg backdrop-blur-0"
     >
       <div className="bg-white/10 backdrop-blur-sm p-10 rounded-lg shadow-lg text-white w-96">
         <h2 className="text-3xl font-bold text-center mb-6">Login Form</h2>
@@ -41,8 +46,17 @@ const Login = () => {
               Forgot password?
             </a>
           </div>
-          <button className="btn btn-success w-full">Log In</button>
+          <button className="btn btn-success w-full mb-4">Log In</button>
         </form>
+
+        <button
+          onClick={handleGoogleLogin}
+          className="flex items-center justify-center bg-white text-black rounded p-2 w-full font-semibold hover:bg-gray-200 transition"
+        >
+          <FcGoogle className="mr-2 text-xl" />
+          Sign in with Google
+        </button>
+
         <p className="text-center mt-4">
           Don’t have an account?{" "}
           <a href="#" className="text-blue-300">

@@ -1,6 +1,7 @@
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
 
@@ -27,8 +28,13 @@ const Register = () => {
     toast.success("Registration successful!");
   };
 
+  const handleGoogleLogin = () => {
+    // গুগল লগইন ফাংশনালিটি এখানে যুক্ত করতে হবে
+    toast.success("Google login successful!");
+  };
+
   return (
-    <div className="h-screen flex items-center justify-center bg-gradient-to-t from-teal-800 via-rose-800 to-slate-800 rounded-lg backdrop-blur-0">
+    <div className="flex items-center justify-center bg-gradient-to-t from-teal-800 via-sky-800 to-slate-800 rounded-lg backdrop-blur-0 p-6">
       <div className="bg-white/10 backdrop-blur-sm p-10 rounded-lg shadow-lg text-white w-96">
         <h2 className="text-3xl font-bold text-center mb-6">Register</h2>
         <form onSubmit={handleRegister}>
@@ -68,8 +74,15 @@ const Register = () => {
               />
             </div>
           </div>
-          <button className="btn btn-success w-full">Register</button>
+          <button className="btn btn-success w-full mb-4">Register</button>
         </form>
+        <button
+          onClick={handleGoogleLogin}
+          className="flex items-center justify-center bg-white text-black rounded p-2 w-full font-semibold hover:bg-gray-200 transition"
+        >
+          <FcGoogle className="mr-2 text-xl" />
+          Sign in with Google
+        </button>
         <p className="text-center mt-4">
           Already have an account?{" "}
           <a href="#" className="text-blue-300">
