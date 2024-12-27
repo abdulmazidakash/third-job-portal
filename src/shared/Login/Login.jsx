@@ -2,6 +2,7 @@ import React from "react";
 import toast from "react-hot-toast";
 import { FaUser, FaLock } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const handleGoogleLogin = () => {
@@ -60,9 +61,11 @@ const Login = () => {
 
         <p className="text-center mt-4">
           Don’t have an account?{" "}
-          <a href="#" className="text-blue-300">
+          <Link to='/register'>
+		  <a className="text-blue-300">
             Register
           </a>
+		  </Link>
         </p>
         <div className="mt-6">
           <marquee className="text-sm">Welcome to our Login Page!</marquee>

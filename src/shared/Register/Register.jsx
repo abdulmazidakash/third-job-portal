@@ -2,6 +2,7 @@ import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 const Register = () => {
 
@@ -85,9 +86,11 @@ const Register = () => {
         </button>
         <p className="text-center mt-4">
           Already have an account?{" "}
-          <a href="#" className="text-blue-300">
+          <Link to='/login'>
+		  <a className="text-blue-300">
             Log In
           </a>
+		  </Link>
         </p>
         <div className="mt-6">
           <marquee className="text-sm">
