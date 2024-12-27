@@ -1,11 +1,12 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { FaUser, FaLock } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const handleGoogleLogin = () => {
     // গুগল লগইন ফাংশনালিটি এখানে যুক্ত করতে হবে
-    alert("Google login successful!");
+    toast.success("Google login successful!");
   };
 
   return (
