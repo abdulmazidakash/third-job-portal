@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 const Register = () => {
+
+  const {createUser, user} = useContext(AuthContext);
 
   const handleRegister = e => {
     e.preventDefault();
@@ -25,8 +28,14 @@ const Register = () => {
       );
       return;
     }
-
     toast.success("Registration successful!");
+
+    createUser(email, password)
+      .then(result =>{
+        console.log(result?.user);
+      })
+      .catch(err =>console.log(err.message))
+
   };
 
   const handleGoogleLogin = () => {
