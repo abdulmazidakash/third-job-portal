@@ -88,19 +88,19 @@ const MyApplication = () => {
 							</div>
 							<div>
 							<div className="font-bold">{job.title}</div>
-							<div className="text-sm opacity-50">{job.location}</div>
+							<div className="text-sm opacity-50 font-semibold">{job.location}</div>
 							</div>
 						</div>
 						</td>
 
-						<td>
+						<td className='font-semibold'>
 						{job.company}
 						</td>
 
 						<th>
 						<button
 							whileHover={{ scale: 1.1 }}
-							className="btn btn-error btn-xs flex items-center gap-1"
+							className="btn btn-error btn-xs flex items-center gap-1 font-semibold"
 						>
 							<MdDelete size={16} /> Delete
 						</button>
