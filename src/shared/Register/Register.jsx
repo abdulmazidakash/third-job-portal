@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthContext";
 
 const Register = () => {
 
-  const {createUser, user} = useContext(AuthContext);
+  const {createUser} = useContext(AuthContext);
 
   const handleRegister = e => {
     e.preventDefault();
@@ -16,8 +16,9 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const photo = form.photo.value;
 
-    console.table({ name, email, password });
+    console.table({ name, email, password, photo });
 
     // পাসওয়ার্ড ভ্যালিডেশন
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
@@ -35,6 +36,7 @@ const Register = () => {
         console.log(result?.user);
       })
       .catch(err =>console.log(err.message))
+      
 
   };
 
@@ -56,6 +58,18 @@ const Register = () => {
                 type="text"
                 placeholder="Your name"
                 name="name"
+                className="bg-transparent outline-none w-full text-white"
+              />
+            </div>
+            </div>
+          <div className="mb-4">
+            <label className="block mb-2">Enter your photoURL</label>
+            <div className="flex items-center bg-white/20 p-2 rounded">
+              <FaUser className="mr-2" />
+              <input
+                type="text"
+                placeholder="Your photoURL"
+                name="photo"
                 className="bg-transparent outline-none w-full text-white"
               />
             </div>

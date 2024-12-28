@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHome, FaInfoCircle, FaUserPlus, FaSignInAlt } from 'react-icons/fa';
+import AuthContext from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
+
+  const {user, signOutUser} = useContext(AuthContext);
   const links = (
     <>
       <li>
@@ -18,8 +22,18 @@ const Navbar = () => {
     </>
   );
 
+  const handleSignOUt = ()=>{
+    signOutUser()
+      .then(()=>{
+        toast.success('signOUt successful')
+      })
+      .catch(()=>{
+        toast.error('not successful signOUt')
+      })
+  }
+
   return (
-    <div className="navbar bg-gradient-to-tr from-sky-800 sticky top-0 z-50 to-slate-800 rounded-b-lg backdrop-blur-0 text-white shadow-lg mb-8">
+    <div className="navbar bg-gradient-to-tr from-sky-800 sticky top-0 z-50 to-slate-800 rounded-b-lg backdrop-blur-0 text-white shadow-lg mb-8 container mx-auto">
       {/* Navbar Start */}
       <div className="navbar-start">
         <div className="dropdown">
@@ -62,12 +76,18 @@ const Navbar = () => {
 
       {/* Navbar End */}
       <div className="navbar-end space-x-3">
-        <Link to="/register" className="btn btn-sm btn-info btn-white">
+       {user ? <>
+        <Link onClick={handleSignOUt} to="/Login" className="btn btn-sm btn-info btn-white">
+          <FaUserPlus className="mr-2" /> Logout
+        </Link>
+        <img src={user?.photoURL} referrerPolicy='no-referrer' alt="" />
+       </> : 
+       <> <Link to="/register" className="btn btn-sm btn-info btn-white">
           <FaUserPlus className="mr-2" /> Register
         </Link>
         <Link to="/login" className="btn btn-sm btn-white bg-yellow-500 hover:bg-yellow-600">
           <FaSignInAlt className="mr-2" /> Login
-        </Link>
+        </Link></>}
       </div>
     </div>
   );
