@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthContext";
 
 const Register = () => {
 
-  const {createUser} = useContext(AuthContext);
+  const {createUser, signInWithGoogle} = useContext(AuthContext);
 
   const handleRegister = e => {
     e.preventDefault();
@@ -42,11 +42,21 @@ const Register = () => {
 
   const handleGoogleLogin = () => {
     // গুগল লগইন ফাংশনালিটি এখানে যুক্ত করতে হবে
-    toast.success("Google login successful!");
+
+    signInWithGoogle()
+      .then(res =>{
+        console.log(res?.user);
+        toast.success("Google login successful!");
+      })
+      .catch(err =>{
+        console.log(err.message);
+        toast.error('please use valid email')
+      })
+
   };
 
   return (
-    <div className="flex items-center justify-center bg-gradient-to-t from-teal-800 via-sky-800 to-slate-800 rounded-lg backdrop-blur-0 p-6">
+    <div className="flex items-center justify-center bg-gradient-to-t from-teal-800 via-sky-800 to-slate-800 rounded-lg  p-6 container mx-auto">
       <div className="bg-white/10 backdrop-blur-sm p-10 rounded-lg shadow-lg text-white w-96">
         <h2 className="text-3xl font-bold text-center mb-6">Register</h2>
         <form onSubmit={handleRegister}>

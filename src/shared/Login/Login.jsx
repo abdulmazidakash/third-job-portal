@@ -7,11 +7,20 @@ import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
 
-  const { signInUser} = useContext(AuthContext);
+  const { signInUser, signInWithGoogle} = useContext(AuthContext);
 
   const handleGoogleLogin = () => {
     // গুগল লগইন ফাংশনালিটি এখানে যুক্ত করতে হবে
-    toast.success("Google login successful!");
+
+    signInWithGoogle()
+      .then(res =>{
+        console.log(res?.user);
+        toast.success("Google login successful!");
+      })
+    .catch(err=>{
+      console.log(err.message);
+      toast.error('please use valid email')
+    })
   };
 
 const handleSignInUser = e =>{
@@ -40,7 +49,7 @@ const handleSignInUser = e =>{
 
   return (
     <div
-      className="p-6 flex items-center justify-center bg-gradient-to-tr from-teal-800 via-slate-800 to-slate-800 rounded-lg backdrop-blur-0"
+      className="p-6 flex items-center justify-center bg-gradient-to-tr from-teal-800 via-slate-800 to-slate-800 rounded-lg  container mx-auto"
     >
       <div className="bg-white/10 backdrop-blur-sm p-10 rounded-lg shadow-lg text-white w-96">
         <h2 className="text-3xl font-bold text-center mb-6">Login Form</h2>

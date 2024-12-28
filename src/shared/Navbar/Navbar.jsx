@@ -80,7 +80,7 @@ const Navbar = () => {
         <Link onClick={handleSignOUt} to="/Login" className="btn btn-sm btn-info btn-white">
           <FaUserPlus className="mr-2" /> Logout
         </Link>
-        <img src={user?.photoURL} referrerPolicy='no-referrer' alt="" />
+        <img src={user?.photoURL} className='w-10 rounded-full mr-4' referrerPolicy='no-referrer' alt="" />
        </> : 
        <> <Link to="/register" className="btn btn-sm btn-info btn-white">
           <FaUserPlus className="mr-2" /> Register

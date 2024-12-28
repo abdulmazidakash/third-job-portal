@@ -46,8 +46,8 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-300">
-          <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
-          <p className="mt-2">Designed with <span className="text-red-500">❤️</span> by <strong>Your Name</strong></p>
+          <p>&copy; {new Date().getFullYear()} Job Portal. All rights reserved.</p>
+          <p className="mt-2">Designed with <span className="text-red-500">❤️</span> by <strong>Abdul Mazid Akash</strong></p>
         </div>
       </div>
     </footer>
