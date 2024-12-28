@@ -15,8 +15,8 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/about">
-          <FaInfoCircle className="mr-2" /> About
+        <Link to="/myApplication">
+          <FaInfoCircle className="mr-2" /> My Application
         </Link>
       </li>
     </>
@@ -25,10 +25,10 @@ const Navbar = () => {
   const handleSignOUt = ()=>{
     signOutUser()
       .then(()=>{
-        toast.success('signOUt successful')
+        toast.success(`signOUt successful ${user?.displayName}`)
       })
       .catch(()=>{
-        toast.error('not successful signOUt')
+        toast.error(`not successful signOUt ${user?.displayName}`)
       })
   }
 
@@ -59,7 +59,7 @@ const Navbar = () => {
           </button>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 w-52 rounded-box bg-white text-black shadow"
+            className="menu menu-sm dropdown-content font-semibold mt-3 w-52 rounded-box bg-white text-black shadow"
           >
             {links}
           </ul>
@@ -71,16 +71,16 @@ const Navbar = () => {
 
       {/* Navbar Center */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1 font-semibold">{links}</ul>
       </div>
 
       {/* Navbar End */}
-      <div className="navbar-end space-x-3">
+      <div className="navbar-end space-x-3 mr-4">
        {user ? <>
         <Link onClick={handleSignOUt} to="/Login" className="btn btn-sm btn-info btn-white">
           <FaUserPlus className="mr-2" /> Logout
         </Link>
-        <img src={user?.photoURL} className='w-10 rounded-full mr-4' referrerPolicy='no-referrer' alt="" />
+        <img src={user?.photoURL} title={user?.displayName} className='w-10 rounded-full  border-2' referrerPolicy='no-referrer' alt="" />
        </> : 
        <> <Link to="/register" className="btn btn-sm btn-info btn-white">
           <FaUserPlus className="mr-2" /> Register

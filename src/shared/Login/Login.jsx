@@ -2,13 +2,17 @@ import React, { useContext } from "react";
 import toast  from "react-hot-toast";
 import { FaUser, FaLock } from "react-icons/fa";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import SocialLogin from "../SocialLogin";
 
 const Login = () => {
 
   const { signInUser} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state || '/';
+  // console.log(location);
 
 
 const handleSignInUser = e =>{
@@ -18,17 +22,18 @@ const handleSignInUser = e =>{
   const email = form.email.value;
   const password = form.password.value;
 
-  console.table({email, password});
+  // console.table({email, password});
 
   //firebase signIn
   signInUser(email, password)
   .then(result =>{
-    toast.success('Login Successful')
-    console.log(result?.user);
+    // console.log(result?.user);
+    toast.success(`Login Successful ${result?.user?.displayName}`)
+    navigate(from);
   })
   .catch(err =>{
-    toast.error('please use valid email and password')
-    console.log(err.message)
+    toast.error(`please use valid email and password. ${err?.message}`)
+    // console.log(err.message)
   })
  
 
