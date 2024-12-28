@@ -10,27 +10,32 @@ const AuthProvider = ({children}) => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 
+	//google login
 	const signInWithGoogle = () =>{
 		setLoading(true);
 		return signInWithPopup(auth, googleProvider);
 	}
 
+	//sign up email and password
 	const createUser = (email, password) =>{
 		setLoading(true);
 		return createUserWithEmailAndPassword(auth, email, password);
 	}
 
 
+	//sign in email and password
 	const signInUser = (email, password) =>{
 		setLoading(true);
 		return signInWithEmailAndPassword(auth, email, password);
 	}
 
+	//sign out user
 	const signOutUser = () =>{
 		setLoading(true);
 		return signOut(auth);
 	}
 
+	//state captured current user
 	useEffect(()=>{
 
 		const unSubscribe = onAuthStateChanged(auth, currentUser =>{
