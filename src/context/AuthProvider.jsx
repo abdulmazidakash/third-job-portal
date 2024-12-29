@@ -10,7 +10,6 @@ import {
     updateProfile,
 } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
-import toast from 'react-hot-toast';
 
 
 const googleProvider = new GoogleAuthProvider();
@@ -46,20 +45,10 @@ const AuthProvider = ({ children }) => {
     };
 
     // Create account and update profile
-    const createAccount = async (email, password, displayName, photoURL) => {
-        return createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                return updateProfile(user, { displayName, photoURL }).then(() => {
-                    toast.success('Account created and profile updated!');
-                    return user;
-                });
-            })
-            .catch((error) => {
-                toast.error('Error creating account: ' + error.message);
-                throw error;
-            });
-    };
+    const updateUserProfile = () => {
+		setLoading(true)
+		return updateProfile(user, { displayName, photoURL });
+	}
 
     // Monitor current user
     useEffect(() => {
@@ -82,7 +71,7 @@ const AuthProvider = ({ children }) => {
         signInUser,
         signOutUser,
         signInWithGoogle,
-        createAccount,
+        updateUserProfile,
     };
 
     return (
