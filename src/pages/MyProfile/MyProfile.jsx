@@ -3,11 +3,12 @@ import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const MyProfile = () => {
   // Dynamic background colors
   const {user, signOutUser} = useAuth();
-  const colors = ["bg-[#10486A]", "bg-green-500", "bg-[#009DE4]"];
+  const colors = ["bg-[#10486A]", "bg-[#17484D]"];
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
   const handleSignOUt = ()=>{
@@ -20,9 +21,10 @@ const MyProfile = () => {
       })
   }
 
+
   return (
     <div
-      className={`flex flex-col items-center p-6 md:p-12 lg:p-16 ${randomColor} text-white`}
+      className={`flex flex-col items-center p-6 md:p-12 lg:p-16 ${randomColor} text-white rounded-lg`}
     >
       {/* Profile Picture */}
       <div className="avatar mb-4">
@@ -85,12 +87,20 @@ const MyProfile = () => {
       </div>
 
       {/* Logout Button */}
+      <div className="flex gap-4">
+	  <Link
+		to='/updateProfile'
+        className="btn btn-info mt-6 px-6 py-2 text-sm md:text-base lg:text-lg"
+      >
+        Edit Profile
+      </Link>
       <button
         onClick={handleSignOUt}
         className="btn btn-info mt-6 px-6 py-2 text-sm md:text-base lg:text-lg"
       >
         Logout
       </button>
+	  </div>
     </div>
   );
 };
