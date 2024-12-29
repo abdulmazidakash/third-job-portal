@@ -1,16 +1,14 @@
 import React, { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
-
+import { FaUser, FaEnvelope, FaLock, FaImage } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import SocialLogin from "../SocialLogin";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
 
-  const {createUser} = useContext(AuthContext);
-
-  const handleRegister = e => {
+  const handleRegister = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -33,23 +31,21 @@ const Register = () => {
     toast.success("Registration successful!");
 
     createUser(email, password)
-      .then(result =>{
+      .then((result) => {
         console.log(result?.user);
       })
-      .catch(err =>console.log(err.message))
-      
-
+      .catch((err) => console.log(err.message));
   };
 
   return (
-    <div className="flex items-center justify-center bg-gradient-to-t from-teal-800 via-cyan-800 to-slate-800 rounded-lg  p-6 container mx-auto">
+    <div className="flex items-center justify-center bg-gradient-to-t from-teal-800 via-cyan-800 to-slate-800 rounded-lg p-6 container mx-auto">
       <div className="bg-white/10 backdrop-blur-sm p-10 rounded-lg shadow-lg text-white w-96">
         <h2 className="text-3xl font-bold text-center mb-6">Register</h2>
         <form onSubmit={handleRegister}>
           <div className="mb-4">
             <label className="block mb-2">Enter your name</label>
             <div className="flex items-center bg-white/20 p-2 rounded">
-              <FaUser className="mr-2" />
+              <FaUser className="mr-2 text-teal-400" />
               <input
                 type="text"
                 placeholder="Your name"
@@ -57,11 +53,11 @@ const Register = () => {
                 className="bg-transparent outline-none w-full text-white"
               />
             </div>
-            </div>
+          </div>
           <div className="mb-4">
             <label className="block mb-2">Enter your photoURL</label>
             <div className="flex items-center bg-white/20 p-2 rounded">
-              <FaUser className="mr-2" />
+              <FaImage className="mr-2 text-purple-400" />
               <input
                 type="text"
                 placeholder="Your photoURL"
@@ -73,7 +69,7 @@ const Register = () => {
           <div className="mb-4">
             <label className="block mb-2">Enter your email</label>
             <div className="flex items-center bg-white/20 p-2 rounded">
-              <FaEnvelope className="mr-2" />
+              <FaEnvelope className="mr-2 text-blue-400" />
               <input
                 type="email"
                 name="email"
@@ -85,7 +81,7 @@ const Register = () => {
           <div className="mb-4">
             <label className="block mb-2">Enter your password</label>
             <div className="flex items-center bg-white/20 p-2 rounded">
-              <FaLock className="mr-2" />
+              <FaLock className="mr-2 text-red-400" />
               <input
                 type="password"
                 name="password"
@@ -97,16 +93,14 @@ const Register = () => {
           <button className="btn btn-success w-full mb-4">Register</button>
         </form>
 
-        {/* social login component  */}
-          <SocialLogin></SocialLogin>
-          
+        {/* social login component */}
+        <SocialLogin></SocialLogin>
+
         <p className="text-center mt-4">
           Already have an account?{" "}
-          <Link to='/login'>
-		  <a className="text-blue-300">
+          <Link to="/login" className="text-blue-300">
             Log In
-          </a>
-		  </Link>
+          </Link>
         </p>
         <div className="mt-6">
           <marquee className="text-sm">

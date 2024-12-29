@@ -8,6 +8,7 @@ import { object } from 'framer-motion/client';
 
 const AddJob = () => {
     const { user } = useAuth();
+	const navigate = useNavigate();
 
 	const handleAddJob = e =>{
 		e.preventDefault();
@@ -35,6 +36,25 @@ const AddJob = () => {
 		newJob.responsibility = newJob.responsibility.split('\n');
 		console.log(newJob);
 
+		fetch('http://localhost:3000/jobs', {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify(newJob)
+		})
+			.then(res => res.json())
+			.then(data =>{
+				console.log(data);
+					if(data.insertedId){
+						Swal.fire({
+							icon: "success",
+							title: "job added successful",
+
+							});
+					}
+					navigate('/')
+			})
 	}
 
 
@@ -113,7 +133,7 @@ const AddJob = () => {
                                 type="text"
                                 name="hr_email"
                                 defaultValue={user?.email}
-                                disabled
+                                readOnly
                                 className="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
                             />
                         </div>
@@ -160,9 +180,10 @@ const AddJob = () => {
                         <label className="block text-gray-600 mb-2">Currency</label>
                         <select
                             name="currency"
+							defaultValue='Select Currency'
                             className="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
                         >
-                            <option value="">Select Currency</option>
+                            <option  disabled>Select Currency</option>
                             <option value="BDT">BDT</option>
                             <option value="USD">USD</option>
                         </select>

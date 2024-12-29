@@ -2,7 +2,7 @@ import React from "react";
 import { FaLinkedin, FaGithub, FaFileAlt } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import Marquee from "react-fast-marquee";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
@@ -10,6 +10,7 @@ const JobApply = () => {
 
 	const {id} = useParams();
 	const {user} = useAuth();
+  const navigate = useNavigate();
 
 	const handleJobApply = e =>{
 		e.preventDefault();
@@ -46,6 +47,7 @@ const JobApply = () => {
 					  });
 				}
 			})
+      navigate('/myApplication')
 	}
 
   return (

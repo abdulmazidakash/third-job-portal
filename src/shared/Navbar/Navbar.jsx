@@ -24,6 +24,11 @@ const Navbar = () => {
           <FaInfoCircle className="mr-2" /> Add Job
         </Link>
       </li>
+      <li>
+        <Link to="/myPostedJobs">
+          <FaInfoCircle className="mr-2" /> My Posted Jobs
+        </Link>
+      </li>
       
     </>
   );

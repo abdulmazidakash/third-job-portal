@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const MyProfile = () => {
   // Dynamic background colors
   const {user, signOutUser} = useAuth();
-  const colors = ["bg-[#10486A]", "bg-[#17484D]"];
+  const colors = ["bg-[#10486A]", "bg-[#17484D]", "bg-[#701B3A]"];
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
   const handleSignOUt = ()=>{
