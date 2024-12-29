@@ -59,7 +59,7 @@ const AddJob = () => {
 
 
     return (
-        <div className="p-6 bg-gradient-to-r from-green-100 to-blue-100 min-h-screen">
+        <div className="p-6 bg-gradient-to-r from-green-100 to-blue-100 min-h-screen rounded-lg">
             <h1 className="md:text-2xl sm:text-2xl text-4xl font-bold text-center my-8">
                 Welcome to{' '}
                 <span className="text-blue-500">

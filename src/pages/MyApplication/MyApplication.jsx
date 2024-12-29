@@ -1,120 +1,107 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
-import { Typewriter } from "react-simple-typewriter";
-import Marquee from "react-fast-marquee";
-import { motion } from "framer-motion";
-import { MdDelete } from "react-icons/md";
+import { Typewriter } from 'react-simple-typewriter';
+import Marquee from 'react-fast-marquee';
+import { MdDelete } from 'react-icons/md';
+import { FaCheckCircle } from 'react-icons/fa';
+
 const MyApplication = () => {
+    const { user } = useAuth();
+    const [jobs, setJobs] = useState([]);
 
-	const {user} = useAuth();
-	const [jobs, setJobs] = useState([]);
-	console.log(jobs);
+    useEffect(() => {
+        fetch(`http://localhost:3000/job-application?email=${user?.email}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setJobs(data);
+            });
+    }, [user.email]);
 
-	useEffect(()=> {
-		fetch(`http://localhost:3000/job-application?email=${user?.email}`)
-			.then(res =>res.json())
-			.then(data =>{
-				setJobs(data);
-			})
-	}, [user.email])
-	return (
-		<div>
-			<div className="container mx-auto p-6">
-			{/* টাইপরাইটার শিরোনাম */}
-			<h1 className="md:text-4xl lg:text-4xl text-2xl font-bold text-center my-8">
-				Welcome to{" "}
-				<span className="text-cyan-500">
-				<Typewriter
-					words={["My Job Application!"]}
-					loop={Infinity}
-					cursor
-					cursorStyle="|"
-					typeSpeed={70}
-					deleteSpeed={50}
-					delaySpeed={1000}
-				/>
-				</span>
-			</h1>
+    return (
+        <div className="min-h-screen bg-gradient-to-r from-green-50 via-blue-50 to-purple-50 p-6 rounded-lg">
+            {/* Header */}
+            <h1 className="text-3xl md:text-4xl font-bold text-center my-6">
+                Welcome to{' '}
+                <span className="text-teal-600">
+                    <Typewriter
+                        words={['My Job Application!']}
+                        loop={Infinity}
+                        cursor
+                        cursorStyle="|"
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                    />
+                </span>
+            </h1>
 
-			{/* মারকি */}
-			<Marquee speed={60} gradient={false} className="text-cyan-600 my-6 text-lg font-semibold">
-				Find your dream job • Apply with confidence • Explore unlimited
-				opportunities • Let's make it happen!
-			</Marquee>
+            {/* Marquee */}
+            <Marquee speed={50} gradient={false} className="text-teal-700 my-4 text-lg font-medium">
+                Find your dream job • Apply with confidence • Explore unlimited opportunities!
+            </Marquee>
 
-			{/* টেবিল */}
-			<div
-				// initial={{ opacity: 0, y: 20 }}
-				// animate={{ opacity: 1, y: 0 }}
-				// transition={{ duration: 0.5 }}
-				className="overflow-x-auto border-2 border-gray-300 rounded-lg my-8"
-			>
-				<table className="table w-full">
-				{/* টেবিল হেড */}
-				<thead className="bg-gradient-to-br from-sky-700 to-teal-700 text-white">
-					<tr>
-					<th>
-						<label>
-						<input type="checkbox" className="checkbox" />
-						</label>
-					</th>
-					<th>Sl</th>
-					<th>Name</th>
-					<th>Job</th>
-				
-					<th>Action</th>
-					</tr>
-				</thead>
-				{/* টেবিল বডি */}
-				<tbody>
-					{jobs.map((job, index) => (
-					<tr key={job._id}>
-						<th>
-						<label>
-							<input type="checkbox" className="checkbox" />
-						</label>
-						</th>
-						<td className="text-purple-500 font-semibold">{index + 1}</td>
-						<td>
-						<div className="flex items-center gap-3">
-							<div className="avatar">
-							<div className="mask mask-squircle w-12 h-12">
-								<img
-								src={job.company_logo}
-								alt="Company Logo"
-								className="object-cover"
-								/>
-							</div>
-							</div>
-							<div>
-							<div className="font-bold">{job.title}</div>
-							<div className="text-sm opacity-50 font-semibold">{job.location}</div>
-							</div>
-						</div>
-						</td>
-
-						<td className='font-semibold'>
-						{job.company}
-						</td>
-
-						<th>
-						<button
-							whileHover={{ scale: 1.1 }}
-							className="btn btn-error btn-xs flex items-center gap-1 font-semibold"
-						>
-							<MdDelete size={16} /> Delete
-						</button>
-						</th>
-					</tr>
-					))}
-				</tbody>
-				</table>
-			</div>
-		</div>
- 
-
-	</div>
-	);
+            {/* Responsive Table */}
+            <div className="overflow-x-auto border-2 border-gray-300 rounded-lg shadow-lg my-8">
+                <table className="table w-full">
+                    {/* Table Header */}
+                    <thead className="bg-gradient-to-br from-blue-600 to-teal-600 text-white">
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" className="checkbox" />
+                                </label>
+                            </th>
+                            <th>#</th>
+                            <th>Job Details</th>
+                            <th>Company</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    {/* Table Body */}
+                    <tbody>
+                        {jobs.map((job, index) => (
+                            <tr key={job._id} className="hover:bg-gray-100">
+                                <td>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </td>
+                                <td className="text-purple-600 font-bold">{index + 1}</td>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img
+                                                    src={job.company_logo}
+                                                    alt="Company Logo"
+                                                    className="object-cover"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-semibold">{job.title}</div>
+                                            <div className="text-sm text-gray-500">{job.location}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td className="font-medium">{job.company}</td>
+                                <td>
+                                    <div className="flex gap-3">
+                                        <button className="btn btn-success btn-xs flex items-center gap-1">
+                                            <FaCheckCircle size={14} /> Approve
+                                        </button>
+                                        <button className="btn btn-error btn-xs flex items-center gap-1">
+                                            <MdDelete size={14} /> Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
 };
 
 export default MyApplication;
