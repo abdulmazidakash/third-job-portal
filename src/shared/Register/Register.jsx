@@ -38,7 +38,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-gradient-to-tr from-teal-800  via-cyan-950 to-slate-800 text-white rounded-lg p-6 container mx-auto">
+    <div className="flex items-center justify-center bg-gradient-to-tr from-orange-950  via-cyan-950 to-slate-800 text-white rounded-lg p-6 container mx-auto">
       <div className="bg-white/10 backdrop-blur-sm p-10 rounded-lg shadow-lg text-white w-96">
         <h2 className="text-3xl font-bold text-center mb-6">Register</h2>
         <form onSubmit={handleRegister}>
