@@ -19,6 +19,12 @@ const Navbar = () => {
           <FaInfoCircle className="mr-2" /> My Application
         </Link>
       </li>
+      <li>
+        <Link to="/addJob">
+          <FaInfoCircle className="mr-2" /> Add Job
+        </Link>
+      </li>
+      
     </>
   );
 
@@ -80,7 +86,11 @@ const Navbar = () => {
         <Link onClick={handleSignOUt} to="/Login" className="btn btn-sm btn-info btn-white">
           <FaUserPlus className="mr-2" /> Logout
         </Link>
+  
+        <Link to="/myProfile">
         <img src={user?.photoURL} title={user?.displayName} className='w-10 rounded-full  border-2' referrerPolicy='no-referrer' alt="" />
+        </Link>
+
        </> : 
        <> <Link to="/register" className="btn btn-sm btn-info btn-white">
           <FaUserPlus className="mr-2" /> Register
