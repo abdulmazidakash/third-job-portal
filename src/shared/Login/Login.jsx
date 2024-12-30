@@ -33,7 +33,7 @@ const handleSignInUser = e =>{
     const user = { email: email}
     // console.log(user);
 
-    axios.post('http://localhost:3000/jwt', user)
+    axios.post('http://localhost:3000/jwt', user, {withCredentials: true})
       .then(res => {
         console.log(res.data);
       })
@@ -90,7 +90,7 @@ const handleSignInUser = e =>{
               Forgot password?
             </a>
           </div>
-          <button className="btn btn-success w-full mb-4">Log In</button>
+          <button className="btn btn-info w-full mb-4">Log In</button>
         </form>
 
           {/* social login component  */}

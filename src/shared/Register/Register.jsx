@@ -90,7 +90,7 @@ const Register = () => {
               />
             </div>
           </div>
-          <button className="btn btn-success w-full mb-4">Register</button>
+          <button className="btn btn-accent w-full mb-4">Register</button>
         </form>
 
         {/* social login component */}
