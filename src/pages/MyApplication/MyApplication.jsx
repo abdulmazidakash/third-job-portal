@@ -12,11 +12,11 @@ const MyApplication = () => {
     const [jobs, setJobs] = useState([]);
     const axiosSecure = useAxiosSecure();
 
-    // http://localhost:3000/job-application?email=akash@batash23.com
+    // https://three-job-portal-server.vercel.app/job-application?email=akash@batash23.com
     useEffect(() => {
         // if (user?.email) {
         //     axios
-        //         .get(`http://localhost:3000/job-application?email=${user.email}`, { withCredentials: true })
+        //         .get(`https://three-job-portal-server.vercel.app/job-application?email=${user.email}`, { withCredentials: true })
         //         .then((res) => setJobs(res.data))
         //         .catch((err) => console.error("Error fetching jobs:", err));
         // }

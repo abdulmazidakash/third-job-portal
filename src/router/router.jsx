@@ -26,7 +26,7 @@ import ViewApplications from "../pages/ViewApplications/ViewApplications";
 		{
 			path: '/jobs/:id',
 			element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-			loader: ({params}) => fetch(`http://localhost:3000/jobs/${params.id}`)
+			loader: ({params}) => fetch(`https://three-job-portal-server.vercel.app/jobs/${params.id}`)
 		},
 		{
 			path: '/myProfile',
@@ -35,7 +35,7 @@ import ViewApplications from "../pages/ViewApplications/ViewApplications";
 		{
 			path: '/viewApplications/:job_id',
 			element: <PrivateRoute><ViewApplications></ViewApplications></PrivateRoute>,
-			loader: ({params}) => fetch(`http://localhost:3000/job-applications/jobs/${params.job_id}`)
+			loader: ({params}) => fetch(`https://three-job-portal-server.vercel.app/job-applications/jobs/${params.job_id}`)
 		},
 		{
 			path: '/myPostedJobs',

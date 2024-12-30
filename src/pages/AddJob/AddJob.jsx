@@ -36,7 +36,7 @@ const AddJob = () => {
 		newJob.responsibility = newJob.responsibility.split('\n');
 		console.log(newJob);
 
-		fetch('http://localhost:3000/jobs', {
+		fetch('https://three-job-portal-server.vercel.app/jobs', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'
