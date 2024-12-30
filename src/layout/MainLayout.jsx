@@ -7,10 +7,10 @@ const MainLayout = () => {
 	return (
 		<>
 		<Toaster position="top-center" reverseOrder={false} />
-		<div>
+		<div className='w-full'>
 			<Navbar></Navbar>
 		</div>
-		<div className='max-w-7xl mx-auto'>
+		<div className='max-w-7xl mx-auto mt-24'>
 			<Outlet></Outlet>
 		</div>
 		<div>

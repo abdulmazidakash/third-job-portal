@@ -10,6 +10,7 @@ import {
     updateProfile,
 } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
+import axios from 'axios';
 
 
 const googleProvider = new GoogleAuthProvider();
@@ -53,9 +54,24 @@ const AuthProvider = ({ children }) => {
     // Monitor current user
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log('state captured current user--->', currentUser);
-            setUser(currentUser ? currentUser : null);
-            setLoading(false);
+            setUser(currentUser);
+            console.log('state captured current user--->', currentUser?.email);
+
+            //jwt token generate code
+            if(currentUser?.email){
+                const user = { email: currentUser.email};
+
+                axios.post('http://localhost:3000/jwt', user,{withCredentials: true})
+                    .then(res => console.log('login true', res.data))
+                    setLoading(false);
+            }
+            else{
+                axios.post('http://localhost:3000/logout', {}, {
+                    withCredentials: true
+                })
+                .then(res => console.log('logout true', res.data))
+                setLoading(false);
+            }
         });
 
         return () => {

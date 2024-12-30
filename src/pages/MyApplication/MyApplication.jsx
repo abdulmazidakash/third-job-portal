@@ -5,23 +5,29 @@ import Marquee from 'react-fast-marquee';
 import { MdDelete } from 'react-icons/md';
 import { FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const MyApplication = () => {
     const { user } = useAuth();
     const [jobs, setJobs] = useState([]);
+    const axiosSecure = useAxiosSecure();
 
+    // http://localhost:3000/job-application?email=akash@batash23.com
     useEffect(() => {
-        if (user?.email) {
-            axios
-                .get(`http://localhost:3000/job-application?email=${user.email}`, { withCredentials: true })
-                .then((res) => setJobs(res.data))
-                .catch((err) => console.error("Error fetching jobs:", err));
-        }
+        // if (user?.email) {
+        //     axios
+        //         .get(`http://localhost:3000/job-application?email=${user.email}`, { withCredentials: true })
+        //         .then((res) => setJobs(res.data))
+        //         .catch((err) => console.error("Error fetching jobs:", err));
+        // }
+
+        axiosSecure.get(`/job-application?email=${user.email}`)
+            .then(res => setJobs(res.data));
     }, [user?.email]);
 
     return (
         <div className="min-h-screen bg-gradient-to-r from-green-50 via-blue-50 to-purple-50 p-6 rounded-lg">
-            <h1 className="text-3xl md:text-4xl font-bold text-center my-6">
+            <h1 className="md:text-3xl sm:text-lg lg:text-4xl font-bold text-center my-6">
                 Welcome to{' '}
                 <span className="text-teal-600">
                     <Typewriter
