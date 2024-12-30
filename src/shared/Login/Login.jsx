@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import toast  from "react-hot-toast";
 import { FaUser, FaLock } from "react-icons/fa";
 
@@ -9,9 +9,10 @@ import axios from "axios";
 
 const Login = () => {
 
-  const { signInUser} = useContext(AuthContext);
+  const { signInUser, forgetPasswordUser} = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const emailRef = useRef();
   const from = location?.state || '/';
   // console.log(location);
 
@@ -39,7 +40,7 @@ const handleSignInUser = e =>{
       })
 
     toast.success(`Login Successful ${result?.user?.email}`)
-    // navigate(from);
+    navigate(from);
   })
   .catch(err =>{
     toast.error(`please use valid email and password. ${err?.message}`)
@@ -48,6 +49,25 @@ const handleSignInUser = e =>{
  
 
 };
+
+const handleForgetPassword = () => {
+  const email = emailRef.current?.value;
+  // console.log(email);
+
+  if (!email) {
+    toast.error("Please provide a valid email address.");
+    return;
+  }
+
+  forgetPasswordUser(email)
+    .then(() => {
+      toast.success("Reset email sent. Please check your inbox.");
+    })
+    .catch((err) => {
+      toast.error(`Failed to send reset email: ${err.message}`);
+    });
+};
+
 
 
   return (
@@ -64,6 +84,7 @@ const handleSignInUser = e =>{
               <input
                 type="email"
                 name="email"
+                ref={emailRef}
                 placeholder="Your email"
                 className="bg-transparent outline-none w-full text-white"
               />
@@ -86,9 +107,11 @@ const handleSignInUser = e =>{
               <input type="checkbox" className="mr-2" />
               Remember me
             </label>
-            <a href="#" className="text-sm text-blue-300">
+            <label >
+            <a onClick={handleForgetPassword}  className="text-sm text-blue-300 hover:underline cursor-pointer">
               Forgot password?
             </a>
+            </label>
           </div>
           <button className="btn btn-info w-full mb-4">Log In</button>
         </form>

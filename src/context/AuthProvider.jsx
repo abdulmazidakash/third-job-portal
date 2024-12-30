@@ -4,6 +4,8 @@ import {
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
     onAuthStateChanged,
+    sendEmailVerification,
+    sendPasswordResetEmail,
     signInWithEmailAndPassword,
     signInWithPopup,
     signOut,
@@ -51,6 +53,18 @@ const AuthProvider = ({ children }) => {
 		return updateProfile(user, { displayName, photoURL });
 	}
 
+    //email verification
+    // const emailVerificationUser = () =>{
+    //     setLoading(true);
+    //     return sendEmailVerification(auth.currentUser);
+    // }
+
+    //forget password reset
+    const forgetPasswordUser = (email) =>{
+        setLoading(true);
+        return sendPasswordResetEmail(auth, email);
+    }
+
     // Monitor current user
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -88,6 +102,8 @@ const AuthProvider = ({ children }) => {
         signOutUser,
         signInWithGoogle,
         updateUserProfile,
+        // emailVerificationUser,
+        forgetPasswordUser,
     };
 
     return (

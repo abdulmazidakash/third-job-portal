@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaUser, FaEnvelope, FaLock, FaImage } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import SocialLogin from "../SocialLogin";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, emailVerificationUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -33,6 +34,16 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result?.user);
+
+        // email verification
+        // emailVerificationUser(currentUser)
+        //   .then(() => {
+        //     toast.success(
+        //       "A verification email has been sent. Please verify your email before logging in."
+        //     );
+        //     form.reset(); 
+        //     navigate("/login");
+        //   })
       })
       .catch((err) => console.log(err.message));
   };

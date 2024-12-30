@@ -38,10 +38,10 @@ export default function UpdateProfile() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-[#184249] via-purple-500 to-pink-500 rounded-lg">
-      <div className="card w-full max-w-sm shadow-2xl bg-base-100 rounded-lg">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-tr from-[#184249] via-[#CC2D6E] to-[#2D283E] rounded-lg">
+      <div className="card w-full max-w-sm shadow-2xl bg-base-100 rounded-lg bg-opacity-30">
         <form className="card-body" onSubmit={handleSubmit}>
-          <h2 className="text-4xl font-bold text-center text-gradient bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent bg-opacity-30">
+          <h2 className="text-4xl font-bold text-center text-gradient bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent bg-opacity-60">
             Update Profile
           </h2>
           <div className="form-control">

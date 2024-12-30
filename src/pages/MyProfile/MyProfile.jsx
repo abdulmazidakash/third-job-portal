@@ -8,8 +8,13 @@ import { Link } from "react-router-dom";
 const MyProfile = () => {
   // Dynamic background colors
   const {user, signOutUser} = useAuth();
-  const colors = ["bg-[#10486A]", "bg-[#17484D]", "bg-[#701B3A]"];
-  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  const colors = ["#003135", "#3F362F", "#15161A", "#44318D", "#25274D", "#00887A"];
+  const color1 = colors[Math.floor(Math.random() * colors.length)];
+  const color2 = colors[Math.floor(Math.random() * colors.length)];
+
+  const gradientStyle = {
+    background: `linear-gradient(to right, ${color1}, ${color2})`,
+  };
 
   const handleSignOUt = ()=>{
     signOutUser()
@@ -24,7 +29,8 @@ const MyProfile = () => {
 
   return (
     <div
-      className={`flex flex-col items-center p-6 md:p-12 lg:p-16 ${randomColor} text-white rounded-lg`}
+    style={gradientStyle}
+      className={`flex flex-col items-center p-6 md:p-12 lg:p-16 text-white rounded-lg`}
     >
       {/* Profile Picture */}
       <div className="avatar mb-4">

@@ -8,9 +8,19 @@ const HotJobCard = ({job}) => {
 
 	const { _id, title, location, category,  salaryRange, description, requirements, company, company_logo} = job;
 
+	const colors = ["#003135", "#3F362F", "#15161A", "#44318D", "#25274D", "#00887A"];
+	const color1 = colors[Math.floor(Math.random() * colors.length)];
+	const color2 = colors[Math.floor(Math.random() * colors.length)];
+
+	const gradientStyle = {
+		background: `linear-gradient(to right, ${color1}, ${color2})`,
+	};
+//   bg-gradient-to-tr from-teal-800 via-slate-800 to-slate-800
 	return (
 		<div>
-			<div className="card  bg-gradient-to-tr from-teal-800 via-slate-800 to-slate-800 shadow-2xl rounded-lg p-5 border-2 border-rose-300 text-white">
+			<div 
+			style={gradientStyle}
+			className="card   shadow-2xl rounded-lg p-5 border-2 border-rose-300 text-white">
 				{/* কার্ডের হেডার */}
 				<div className="flex justify-between items-start mb-4">
 					<div className="flex items-center gap-3">
