@@ -10,7 +10,7 @@ const MyPostedJobs = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/jobs?email=${user?.email}`)
+        fetch(`https://three-job-portal-server.vercel.app/jobs?email=${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
                 setJobs(data);
