@@ -5,6 +5,7 @@ import { FaUser, FaLock } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import SocialLogin from "../SocialLogin";
+import axios from "axios";
 
 const Login = () => {
 
@@ -27,9 +28,18 @@ const handleSignInUser = e =>{
   //firebase signIn
   signInUser(email, password)
   .then(result =>{
-    // console.log(result?.user);
-    toast.success(`Login Successful ${result?.user?.displayName}`)
-    navigate(from);
+    // console.log(result);
+    console.log('sign in', result?.user?.email);
+    const user = { email: email}
+    // console.log(user);
+
+    axios.post('http://localhost:3000/jwt', user)
+      .then(res => {
+        console.log(res.data);
+      })
+
+    toast.success(`Login Successful ${result?.user?.email}`)
+    // navigate(from);
   })
   .catch(err =>{
     toast.error(`please use valid email and password. ${err?.message}`)
