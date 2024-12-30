@@ -31,12 +31,12 @@ const AddJob = () => {
 		const initialData = Object.fromEntries(formData.entries());
 		// console.log(initialData);
 		const {min, max, currency, ...newJob} = initialData;
-		newJob.salaryRange = {min, max, currency};
+		newJob.salaryRange = {min: parseInt(min) , max: parseInt(max) , currency};
 		newJob.requirements = newJob.requirements.split('\n');
 		newJob.responsibility = newJob.responsibility.split('\n');
 		console.log(newJob);
 
-		fetch('https://three-job-portal-server.vercel.app/jobs', {
+		fetch('http://localhost:3000/jobs', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'

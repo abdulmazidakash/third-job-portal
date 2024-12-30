@@ -10,8 +10,8 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <Link to="/">
-          <FaHome className="mr-2" /> Home
+        <Link to="/allJobs">
+          <FaHome className="mr-2" /> All Jobs
         </Link>
       </li>
       <li>
@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
 
-            <div className="navbar bg-opacity-30 fixed bg-gradient-to-tr from-sky-800 top-0 z-50 to-slate-800 rounded-b-lg backdrop-blur-0 text-white shadow-lg mb-8">
+            <div className="navbar bg-opacity-30 fixed bg-gradient-to-tr from-sky-800 top-0 z-50 to-slate-800  backdrop-blur-0 text-white shadow-lg mb-8">
               {/* Navbar Start */}
              <div className='container mx-auto'>
              <div className="navbar-start">

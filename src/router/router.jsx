@@ -12,6 +12,7 @@ import AddJob from "../pages/AddJob/AddJob";
 import UpdateProfile from "../pages/MyProfile/UpdateProfile/UpdateProfile";
 import MyPostedJobs from "../pages/MyPostedJobs/MyPostedJobs";
 import ViewApplications from "../pages/ViewApplications/ViewApplications";
+import AllJobs from "../pages/AllJobs/AllJobs";
 
   const router = createBrowserRouter([
 	{
@@ -26,16 +27,25 @@ import ViewApplications from "../pages/ViewApplications/ViewApplications";
 		{
 			path: '/jobs/:id',
 			element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-			loader: ({params}) => fetch(`https://three-job-portal-server.vercel.app/jobs/${params.id}`)
+			loader: ({params}) => fetch(`http://localhost:3000/jobs/${params.id}`)
+		},
+		{
+			path: 'allJobs/jobs/:id',
+			element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
+			loader: ({params}) => fetch(`http://localhost:3000/jobs/${params.id}`)
 		},
 		{
 			path: '/myProfile',
 			element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>,
 		},
 		{
+			path: '/allJobs',
+			element: <AllJobs></AllJobs>,
+		},
+		{
 			path: '/viewApplications/:job_id',
 			element: <PrivateRoute><ViewApplications></ViewApplications></PrivateRoute>,
-			loader: ({params}) => fetch(`https://three-job-portal-server.vercel.app/job-applications/jobs/${params.job_id}`)
+			loader: ({params}) => fetch(`http://localhost:3000/job-applications/jobs/${params.job_id}`)
 		},
 		{
 			path: '/myPostedJobs',

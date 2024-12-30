@@ -33,7 +33,7 @@ const handleSignInUser = e =>{
     const user = { email: email}
     // console.log(user);
 
-    axios.post('https://three-job-portal-server.vercel.app/jwt', user, {withCredentials: true})
+    axios.post('http://localhost:3000/jwt', user, {withCredentials: true})
       .then(res => {
         console.log(res.data);
       })

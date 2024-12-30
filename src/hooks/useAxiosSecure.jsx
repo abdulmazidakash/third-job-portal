@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const axiosInstance = axios.create({
-	baseURL: 'https://three-job-portal-server.vercel.app',
+	baseURL: 'http://localhost:3000',
 	withCredentials: true,
 })
 
