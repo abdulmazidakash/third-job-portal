@@ -1,4 +1,108 @@
-# 🌟 Job Portal 🚀
+<!-- 
+# Job Portal
+
+A brief description of what this project does and who it's for
+
+## npm package
+
+This project is used by the following companies:
+
+| package             | work                                                                |
+| ----------------- | ----------------------------------------------------------------- |
+| tailwind |  css |
+| daisy ui | css |
+| react router dom |  router |
+| react-hot-toast |  toasty |
+| react-icons |  icons |
+| react-helmet |  dynamic page title |
+
+ 
+
+
+## Technologies Used
+
+Frontend:
+
+- React: For building user interfaces.
+- Tailwind CSS: For responsive and modern UI styling.
+- DaisyUI: Predefined UI components for faster development.
+- React Router: For routing and navigation.
+- React Icons: For adding modern icons.
+- React Hot Toast: For interactive notification.
+- React Helmet: For dynamic page titles.
+- React Simple Typewriter: For engaging typewriter animations.
+
+
+
+## Live Link
+
+https://coffee-book-akash.netlify.app/
+
+## Features
+
+- local storage data and remove
+- add favorite button disabled
+- sort by rating and popularity
+- active tab
+
+
+
+
+## File Structure
+
+Install my-project with npm
+
+```bash
+└── src/
+|     ├── assets/
+|     ├── components/
+|     |     └── HotJobCard.jsx
+|     ├── context/
+|     |     └── AuthContext.jsx
+|     |     └── AuthProvider.jsx
+|     ├── firebase/
+|     |     └── firebase.config.js
+|     ├── hooks/
+|     |     └── useAuth.jsx
+|     |     └── useAxiosSecure.jsx
+|     |     └── useJobs.jsx
+|     ├── layouts/
+|     |     └── MainLayout.jsx     
+|     ├── pages/
+|     |     ├── Home
+|     |     |     └── JobDetails.jsx/    
+|     |     |     └── Banner.jsx/    
+|     |     |     └── Home.jsx/    
+|     |     |     └── HotJobs.jsx/    
+|     |     └── AddJob.jsx     
+|     |     └── AllJobs.jsx     
+|     |     └── JobApply.jsx     
+|     |     └── MyApplication.jsx     
+|     |     └── MyPostedJobs.jsx     
+|     |     └── MyProfile.jsx     
+|     |     └── UpdateProfile.jsx     
+|     |     └── ViewApplications.jsx     
+|     ├── router/
+|     |     └── PrivateRoute.jsx
+|     |     └── router.jsx
+|     ├── shared/
+|     |     └── Footer.jsx
+|     |     └── Login.jsx
+|     |     └── Navbar.jsx
+|     |     └── Register.jsx
+|     |     └── SocialLogin.jsx
+└── App.css
+└── App.jsx/
+└── index.css/
+└── main.jsx/
+
+
+```
+
+
+ -->
+
+ # 🌟 Job Portal 🚀
 
 A modern, interactive platform for job seekers and recruiters to connect effortlessly. 
 
